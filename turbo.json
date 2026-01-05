@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "deploy": {
+      "dependsOn": ["^deploy"],
+      "cache": false
+    },
+    "preview": {
+      "cache": false
+    },
+    "@repo/api#destroy": {
+      "dependsOn": ["@repo/web#destroy"],
+      "cache": false
+    },
+    "@repo/web#destroy": {
+      "cache": false
+    }
+  }
+}
