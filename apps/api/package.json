@@ -1,0 +1,46 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./hc": "./src/hc.ts",
+    "./alchemy": {
+      "bun": "./alchemy.run.ts",
+      "import": "./alchemy.run.ts",
+      "types": "./alchemy.run.ts"
+    }
+  },
+  "scripts": {
+    "dev": "bun run scripts/alchemy-dev.ts",
+    "preview": "bun run scripts/alchemy-preview.ts",
+    "deploy": "bun run scripts/alchemy-deploy.ts",
+    "destroy": "bun run scripts/alchemy-destroy.ts",
+    "check-types": "tsc --noEmit",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.6",
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "@repo/config": "*",
+    "@repo/shared": "*",
+    "agents": "^0.3.0",
+    "ai": "^6.0.3",
+    "alchemy": "^0.82.1",
+    "better-auth": "^1.4.8",
+    "better-auth-cloudflare": "^0.2.9",
+    "drizzle-orm": "^0.45.1",
+    "hono": "^4.11.1",
+    "openai": "^6.15.0",
+    "viem": "^2.43.3",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251223.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.5.0",
+    "drizzle-kit": "^0.31.8",
+    "typescript": "^5.9.3"
+  }
+}
